@@ -47,6 +47,7 @@ def listas_aprobados_suspensos(calificaciones):
     suspensos=[]
     aprobados=[]
     for alumno in calificaciones:
+        alumno["Asistencia"]=alumno["Asistencia"].replace('%', '') # le quito el porcentaje a cada alumno
         if alumno["Nota final"]<5 or alumno["Asistencia"]<75:
             suspensos.append(alumno)
         else:
