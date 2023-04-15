@@ -34,8 +34,8 @@ obtener_csv_como_lista_de_diccionarios("calificaciones.csv")
 def agregar_nota_final(calificaciones):
     for alumno in calificaciones:
         parcial1=float(alumno['Parcial1'])
-        parcial2=float(alumno['parcial2'])
-        practicas=float(alumno['practicas'])
+        parcial2=float(alumno['Parcial2'])
+        practicas=float(alumno['Practicas'])
         
         nota_parciales= parcial1*0.3 + parcial2*0.3
         nota_practicas=practicas*0.4
@@ -47,7 +47,7 @@ def listas_aprobados_suspensos(calificaciones):
     suspensos=[]
     aprobados=[]
     for alumno in calificaciones:
-        if alumno["Nota final"]<=0 or alumno["Asistencia"]<75:
+        if alumno["Nota final"]<=5 or alumno["Asistencia"]<75:
             suspensos.append(alumno)
         else:
             aprobados.append(alumno)
