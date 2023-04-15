@@ -31,3 +31,14 @@ obtener_csv_como_lista_de_diccionarios("calificaciones.csv")
 
 
 
+def agregar_nota_final(calificaciones):
+    for alumno in calificaciones:
+        parcial1=float(alumno['Parcial1'])
+        parcial2=float(alumno['parcial2'])
+        practicas=float(alumno['practicas'])
+        
+        nota_parciales= parcial1*0.3 + parcial2*0.3
+        nota_practicas=practicas*0.4
+        nota_final=nota_parciales + nota_practicas
+        alumno["Nota final"]= nota_final
+        return calificaciones
