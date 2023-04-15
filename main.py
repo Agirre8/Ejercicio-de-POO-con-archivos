@@ -41,4 +41,16 @@ def agregar_nota_final(calificaciones):
         nota_practicas=practicas*0.4
         nota_final=nota_parciales + nota_practicas
         alumno["Nota final"]= nota_final
-        return calificaciones
+        return calificaciones 
+ 
+def listas_aprobados_suspensos(calificaciones):
+    suspensos=[]
+    aprobados=[]
+    for alumno in calificaciones:
+        if alumno["Nota final"]<=0 or alumno["Asistencia"]<75:
+            suspensos.append(alumno)
+        else:
+            aprobados.append(alumno)
+     
+    return (aprobados,suspensos)
+         
