@@ -47,7 +47,7 @@ def listas_aprobados_suspensos(calificaciones):
     suspensos=[]
     aprobados=[]
     for alumno in calificaciones:
-        if alumno["Nota final"]<=5 or alumno["Asistencia"]<75:
+        if alumno["Nota final"]<5 or alumno["Asistencia"]<75:
             suspensos.append(alumno)
         else:
             aprobados.append(alumno)
