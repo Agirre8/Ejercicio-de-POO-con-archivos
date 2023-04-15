@@ -1,5 +1,5 @@
 
-
+import csv
 def obtener_csv_como_lista_de_diccionarios(calificaciones):
     separador = ";"
     with open(calificaciones, encoding="utf-8") as archivo:
@@ -27,7 +27,7 @@ def obtener_csv_como_lista_de_diccionarios(calificaciones):
             print(alumnos)
         return alumnos
 
-obtener_csv_como_lista_de_diccionarios("calificaciones.csv")
+
 
 
 
@@ -46,13 +46,16 @@ def agregar_nota_final(calificaciones):
 def listas_aprobados_suspensos(calificaciones):
     suspensos=[]
     aprobados=[]
-    for alumno in calificaciones:
+    with open(calificaciones) as c:
+        reader=csv.DictReader(c)
+    for alumno in reader:
         alumno["Asistencia"]=alumno["Asistencia"].replace('%', '') # le quito el porcentaje a cada alumno
-        int(alumno["Asistencia"]) #lo convierto en un entero
-        if alumno["Nota final"]<5 or alumno["Asistencia"]<75:
+        #lo convierto en un entero
+        if float(alumno["Nota final"])<5 or int(alumno["Asistencia"])<75:
             suspensos.append(alumno)
         else:
             aprobados.append(alumno)
      
     return (aprobados,suspensos)
          
+listas_aprobados_suspensos("calificaciones.csv")
